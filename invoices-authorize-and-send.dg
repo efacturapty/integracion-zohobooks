@@ -1,0 +1,53 @@
+//********** API KEY ***************
+// INGRESE AQUÍ EL API KEY DE SU CUENTA DE efacturapty
+apiKey = "EJEMPLO78715B7F0B8D0218F85D8E3C59E0D04D4BF828CE12F0695C8A26A82E79BBCE";
+//**********************************
+customer = zoho.books.getRecordsByID("Contacts",organization.get("organization_id"),invoice.get("customer_id"));
+sendMap = {"customer":customer,"invoice":invoice};
+headers = {"ApiKeyEfactura":apiKey,"Content-Type":"application/x-www-form-urlencoded"};
+autorizacion = invokeurl
+[
+	url :"https://hub.efacturapty.com/Zoho/Invoice"
+	type :POST
+	parameters:sendMap
+	headers:headers
+];
+autorizacionMap = autorizacion.toMap();
+resultMap = Map();
+if(autorizacionMap.get('autorizada'))
+{
+	customFieldList = List();
+	customFieldList.add({'api_name':'cf_cufe','value':autorizacionMap.get('cufe')});
+	customFieldList.add({'api_name':'cf_protocolo_de_autorizaci_n','value':autorizacionMap.get('protocoloAutorizacion')});
+	customFieldList.add({'api_name':'cf_fecha_de_autorizaci_n','value':autorizacionMap.get('fechaAutorizacion').left(10)});
+	updateInvoiceMap = {'custom_fields':customFieldList};
+	updateInvoice = zoho.books.updateRecord('Invoices',organization.get('organization_id'),invoice.get('invoice_id'),updateInvoiceMap);
+	markAsSent = zoho.books.markStatus('Invoices',organization.get('organization_id'),invoice.get('invoice_id'),'sent');
+	invoiceID = invoice.get("invoice_id");
+	organizationID = organization.get("organization_id");
+	apiEndPoint = organization.get("api_root_endpoint");
+	url = apiEndPoint + "/invoices/" + invoiceID + "/email?organization_id=" + organizationID;
+	response = invokeurl
+	[
+		url :url
+		type :POST
+		connection:"zbooks"
+	];
+	info response;
+	resultMap = {"code":updateInvoice,"message":"Factura autorizada","CUFE":autorizacionMap.get('cufe')};
+}
+else
+{
+	errores = autorizacionMap.get('rRetEnviFe').get('xProtFe').get('rProtFe').get('gInfProt').get('gResProc');
+	mensajeError = "";
+	for each  error in errores
+	{
+		mensajeError = mensajeError + "  [" + error.get('dCodRes') + "-" + error.get('dMsgRes') + "]";
+	}
+	customFieldList = List();
+	customFieldList.add({'api_name':'cf_protocolo_de_autorizaci_n','value':mensajeError});
+	updateInvoiceMap = {'custom_fields':customFieldList};
+	updateInvoice = zoho.books.updateRecord('Invoices',organization.get('organization_id'),invoice.get('invoice_id'),updateInvoiceMap);
+	resultMap = {"code":1,"message":"Errores encontrados: " + mensajeError};
+}
+return resultMap;
