@@ -1,0 +1,48 @@
+//********** API KEY ***************
+// INGRESE AQUÍ EL API KEY DE SU CUENTA DE efacturapty
+apiKey = "0D9B47A48FB8641D0C653898096C4A27B06DC6DCFF343D9A572C9863452483DBZ";
+//**********************************
+
+resultMap = Map();
+resultMap.put("code",0);
+organizationID = organization.get("organization_id");
+
+for each  invoice in invoices
+{
+	customer = zoho.books.getRecordsByID("Contacts",organizationID,invoice.get("customer_id"));
+	sendMap = {"customer":customer,"invoice":invoice};
+	headers = {"ApiKeyEfactura":apiKey,"Content-Type":"application/x-www-form-urlencoded"};
+	autorizacion = invokeurl
+	[
+		url :"https://hub.efacturapty.com/Zoho/Invoice"
+		type :POST
+		parameters:sendMap
+		headers:headers
+	];
+	autorizacionMap = autorizacion.toMap();
+	resultMap = Map();
+	if(autorizacionMap.get('autorizada'))
+	{
+		customFieldList = List();
+		customFieldList.add({'api_name':'cf_cufe','value':autorizacionMap.get('cufe')});
+		customFieldList.add({'api_name':'cf_protocolo_de_autorizaci_n','value':autorizacionMap.get('protocoloAutorizacion')});
+		customFieldList.add({'api_name':'cf_fecha_de_autorizaci_n','value':autorizacionMap.get('fechaAutorizacion').left(10)});
+		updateInvoiceMap = {'custom_fields':customFieldList};
+		updateInvoice = zoho.books.updateRecord('Invoices',organizationID,invoice.get('invoice_id'),updateInvoiceMap);
+		markAsSent = zoho.books.markStatus('Invoices',organizationID,invoice.get('invoice_id'),'sent');
+	}
+	else
+	{
+		errores = autorizacionMap.get('rRetEnviFe').get('xProtFe').get('rProtFe').get('gInfProt').get('gResProc');
+		mensajeError = "";
+		for each  error in errores
+		{
+			mensajeError = mensajeError + "  [" + error.get('dCodRes') + "-" + error.get('dMsgRes') + "]";
+		}
+		customFieldList = List();
+		customFieldList.add({'api_name':'cf_protocolo_de_autorizaci_n','value':mensajeError});
+		updateInvoiceMap = {'custom_fields':customFieldList,'notes':invoice.get('notes') + mensajeError};
+		updateInvoice = zoho.books.updateRecord('Invoices',organizationID,invoice.get('invoice_id'),updateInvoiceMap);
+	}
+}
+return resultMap;
