@@ -25,6 +25,31 @@ Todos los campos personalizados deben crearse con tipo de dato de TEXTO y conten
 
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/145995728/ba7a3f20-d43e-40a2-8459-b0a6df5a8177)
 
+
+### Botón personalizado para autorización y anulación de facturas y notas de crédito.
+
+Para enviar la factura a ser autorizada, debe crear un botón personalizado, el cual debe contener los scripts correspondientes que están en este repositorio, tal como se ve en la siguiente imagen.
+
+![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/b4873ab7-9deb-4643-8ad4-7ca4c0ae8039)
+
+Código disponible en https://github.com/efacturapty/integracion-zohobooks/blob/main/invoices-authorize.dg
+
+![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/3719d207-ffef-4ea0-a141-1a42fc19d0d6)
+
+Código disponible en https://github.com/efacturapty/integracion-zohobooks/blob/main/invoices-void.dg
+
+![image](https://github.com/efacturapty/integracion-zohobooks/assets/145995728/bf6df7a6-7283-4e12-ad85-bce092953d69)
+
+Código disponible en https://github.com/efacturapty/integracion-zohobooks/blob/main/credit-notes-authorize.dg
+
+![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/3f6fff11-b8b1-4bd1-bccc-f57f2957f68f)
+
+Código disponible en https://github.com/efacturapty/integracion-zohobooks/blob/main/credit-notes-void.dg
+
+Debe reemplazar el APIKEY del script por uno generado en el apartado de integraciones con la cuenta correspondiente de efacturapty
+
+![image](https://github.com/efacturapty/integracion-zohobooks/assets/145995728/e52dd382-52de-4ef9-8247-cf853a9a83b0)
+
 ### Habilitar integración de API de Zoho 
 
 Para habilitar la integración entre ambas plataformas, ir al menú principal de ZohoBooks, ir a "Settings" y seleccionar "Developer Space". 
@@ -37,23 +62,3 @@ Para que la comunicación entre eFacturapty y ZohoBooks se habilite se debe sele
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/b5ee938a-069b-47cc-822f-6fb961770bba)
 
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/7cc0c12d-967e-4edb-b54c-7948fe5cb644)
-
-
-### Botón personalizado para autorización y anulación de facturas y notas de crédito.
-
-Para enviar la factura a ser autorizada, debe crear un botón personalizado, el cual debe contener los scripts correspondientes que están en este repositorio, tal como se ve en la siguiente imagen.
-
-![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/b4873ab7-9deb-4643-8ad4-7ca4c0ae8039)
-
-![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/3719d207-ffef-4ea0-a141-1a42fc19d0d6)
-
-![image](https://github.com/efacturapty/integracion-zohobooks/assets/145995728/bf6df7a6-7283-4e12-ad85-bce092953d69)
-
-![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/3f6fff11-b8b1-4bd1-bccc-f57f2957f68f)
-
-Debe reemplazar el APIKEY del script por uno generado en el apartado de integraciones con la cuenta correspondiente de efacturapty
-
-![image](https://github.com/efacturapty/integracion-zohobooks/assets/145995728/e52dd382-52de-4ef9-8247-cf853a9a83b0)
-
-
-
