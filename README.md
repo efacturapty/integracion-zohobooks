@@ -62,3 +62,24 @@ Para que la comunicación entre eFacturapty y ZohoBooks se habilite se debe sele
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/b5ee938a-069b-47cc-822f-6fb961770bba)
 
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/7cc0c12d-967e-4edb-b54c-7948fe5cb644)
+
+En el caso de habilitar el código de adjuntar PDF del Comprobante Auxiliar de Factura Electrónica (CAFE) a la factura o nota de crédito en Zoho Books, es necesario habilitar una seguna conexión. Para ello se ingresa a la sección de "Mis conexiones" o "My Connections" para crear dicha conexión.
+
+<img width="1362" alt="My_Connections_ZohoBooks" src="https://github.com/user-attachments/assets/a471b46f-b998-4c11-974e-1de7baa70df1" />
+
+Utilizano el botón para crear una nueva conexión, se puede buscar la conexión con Zoho Books con ayuda del campo de búsqueda, y seleccionar la conexión "Zoho Books".
+
+<img width="1362" alt="ZohoBooks_NewConnection" src="https://github.com/user-attachments/assets/163434a4-2d87-4782-a530-34563f468d9f" />
+
+Se asigna un nombre a la conexión, que será utilizado en el script, recomendamos utilizar "zbooks". Se debe deshabilitar la opción de utilizar credenciales del usuario que ingresó (Use credential of login User). Finalmente en la sección de autorización, utilizando la el campo de búsqueda marcar ZohoBooks.Invoices.All , a continuación, se muestran estos datos ingresados. 
+
+<img width="1361" alt="ZohoBooks_ConnectionForm" src="https://github.com/user-attachments/assets/f80e7c0f-9b08-4266-a3c8-829af658a040" />
+
+Finalmente, se presional botón "Create and connect", con lo cual se solicitarán confirmaciones para completar la conexión. Con ello estará listo para habilitar la sección del código para adjuntar el PDF del CAFE a sus facturas al momento de emitirlas.
+
+
+
+
+
+
+
