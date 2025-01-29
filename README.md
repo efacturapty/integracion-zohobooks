@@ -50,7 +50,9 @@ Debe reemplazar el APIKEY del script por uno generado en el apartado de integrac
 
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/145995728/e52dd382-52de-4ef9-8247-cf853a9a83b0)
 
-### Habilitar integración de API de Zoho 
+### Habilitar integración de API de Zoho
+
+#### Conexión para emisión de documentos fiscales
 
 Para habilitar la integración entre ambas plataformas, ir al menú principal de ZohoBooks, ir a "Settings" y seleccionar "Developer Space". 
 
@@ -62,6 +64,8 @@ Para que la comunicación entre eFacturapty y ZohoBooks se habilite se debe sele
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/b5ee938a-069b-47cc-822f-6fb961770bba)
 
 ![image](https://github.com/efacturapty/integracion-zohobooks/assets/151682173/7cc0c12d-967e-4edb-b54c-7948fe5cb644)
+
+#### Conexión para adjuntar PDF del CAFE
 
 En el caso de habilitar el código de adjuntar PDF del Comprobante Auxiliar de Factura Electrónica (CAFE) a la factura o nota de crédito en Zoho Books, es necesario habilitar una seguna conexión. Para ello se ingresa a la sección de "Mis conexiones" o "My Connections" para crear dicha conexión.
 
