@@ -30,6 +30,18 @@ for each  invoice in invoices
 		updateInvoiceMap = {'custom_fields':customFieldList};
 		updateInvoice = zoho.books.updateRecord('Invoices',organizationID,invoice.get('invoice_id'),updateInvoiceMap);
 		markAsSent = zoho.books.markStatus('Invoices',organizationID,invoice.get('invoice_id'),'sent');
+		//Adjuntar PDF
+		//Habilitar conexión adicional Zoho Books como se muestra en 
+		//      https://github.com/efacturapty/integracion-zohobooks?tab=readme-ov-file#conexi%C3%B3n-para-adjuntar-pdf-del-cafe
+		/*pdfInvoice = invokeurl("https://api.efacturapty.com/api/v1/Invoices/" + autorizacionMap.get('invoice') + "/cafe-file","GET",{"Authorization":"Bearer " + apiKey});
+		pdfInvoice.setParamName("attachment");
+		result = invokeurl
+		[
+			url :"https://www.zohoapis.com/books/v3/invoices/" + invoice.get('invoice_id') + "/attachment?organization_id=" + organization.get('organization_id')
+			type :POST
+			files:pdfInvoice
+			connection:"zbooks"
+		];*/
 	}
 	else
 	{
