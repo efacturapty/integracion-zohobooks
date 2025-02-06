@@ -35,7 +35,7 @@ if(autorizacionMap.get('autorizada'))
 	pdfInvoice.setParamName("attachment");
 	result = invokeurl
 	[
-		url :"https://www.zohoapis.com/books/v3/invoices/" + invoice.get('invoice_id') + "/attachment?organization_id=" + organization.get('organization_id') + "&can_send_in_mail=true"
+		url :"https://www.zohoapis.com/books/v3/invoices/" + creditnote.get('invoice_id') + "/attachment?organization_id=" + organization.get('organization_id') + "&can_send_in_mail=true"
 		type :POST
 		files:pdfInvoice
 		connection:"zbooks"
