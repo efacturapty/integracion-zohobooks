@@ -75,9 +75,8 @@ Utilizano el botón para crear una nueva conexión, se puede buscar la conexión
 
 <img width="1362" alt="ZohoBooks_NewConnection" src="https://github.com/user-attachments/assets/163434a4-2d87-4782-a530-34563f468d9f" />
 
-Se asigna un nombre a la conexión, que será utilizado en el script, recomendamos utilizar "zbooks". Se debe deshabilitar la opción de utilizar credenciales del usuario que ingresó (Use credential of login User). Finalmente en la sección de autorización, utilizando la el campo de búsqueda marcar ZohoBooks.Invoices.All , a continuación, se muestran estos datos ingresados. 
+Se asigna un nombre a la conexión, que será utilizado en el script, recomendamos utilizar "zbooks". Se debe deshabilitar la opción de utilizar credenciales del usuario que ingresó (Use credential of login User). Finalmente en la sección de autorización, utilizando la el campo de búsqueda marcar ZohoBooks.Invoices.All y ZohoBooks.CreditNotes.All . 
 
-<img width="1361" alt="ZohoBooks_ConnectionForm" src="https://github.com/user-attachments/assets/f80e7c0f-9b08-4266-a3c8-829af658a040" />
 
 Finalmente, se presional botón "Create and connect", con lo cual se solicitarán confirmaciones para completar la conexión. Con ello estará listo para habilitar la sección del código para adjuntar el PDF del CAFE a sus facturas al momento de emitirlas.
 
